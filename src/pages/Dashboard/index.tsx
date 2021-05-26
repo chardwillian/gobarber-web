@@ -51,6 +51,7 @@ const Dashboard: React.FC = () => {
 
   const handleDateChange = useCallback((day: Date, modifiers: DayModifiers) => {
     if (modifiers.available && !modifiers.disabled) {
+      // se tirar o "&& !modifiers.disabled" vai poder selecionar datas anteriores e ver os agendamentos
       setSelectedDate(day);
     }
   }, []);
@@ -125,7 +126,8 @@ const Dashboard: React.FC = () => {
 
   const afternoonAppointments = useMemo(() => {
     return appointments.filter(appointment => {
-      return parseISO(appointment.date).getHours() >= 12;
+      const parsedDate = parseISO(appointment.date);
+      return parsedDate.getHours() >= 12 && parsedDate.getHours() < 18;
     });
   }, [appointments]);
 
@@ -250,7 +252,7 @@ const Dashboard: React.FC = () => {
               <p>Nenhum agendamento neste período</p>
             )}
 
-            {afternoonAppointments.map(appointment => (
+            {eveningAppointments.map(appointment => (
               <Appointment key={appointment.id}>
                 <span>
                   <FiClock />
@@ -272,7 +274,7 @@ const Dashboard: React.FC = () => {
         <Calendar>
           <DayPicker
             weekdaysShort={['D', 'S', 'T', 'Q', 'Q', 'S', 'S']}
-            fromMonth={new Date()}
+            fromMonth={new Date()} // para visualizar os meses anteriores é desabilitar essa função e tirar o segundo modifiers handleDateChange
             disabledDays={[{ daysOfWeek: [0, 6] }, ...disabledDays]} // desabilitando sábado e domingo
             modifiers={{
               available: { daysOfWeek: [1, 2, 3, 4, 5] },
