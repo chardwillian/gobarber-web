@@ -63,6 +63,46 @@ export const Profile = styled.div`
   }
 `;
 
+export const ToCreateAppointment = styled.button`
+  div {
+    margin-left: 80px;
+    align-items: center;
+
+    strong {
+      margin-left: 3px;
+      color: #f4ede8;
+
+      svg {
+        margin-top: 3px;
+        margin-right: 8px;
+        color: #ff9000;
+        width: 17px;
+        height: 17px;
+      }
+    }
+  }
+`;
+
+export const ToAddBarber = styled.button`
+  div {
+    margin-left: 80px;
+    align-items: center;
+
+    strong {
+      margin-left: 3px;
+      color: #f4ede8;
+
+      svg {
+        margin-top: 3px;
+        margin-right: 8px;
+        color: #ff9000;
+        width: 17px;
+        height: 17px;
+      }
+    }
+  }
+`;
+
 export const Content = styled.main`
   max-width: 1120px;
   margin: 64px auto;

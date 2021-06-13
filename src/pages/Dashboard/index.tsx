@@ -4,7 +4,8 @@ import ptBR from 'date-fns/locale/pt-BR';
 import DayPicker, { DayModifiers } from 'react-day-picker';
 import 'react-day-picker/lib/style.css';
 
-import { FiClock, FiPower } from 'react-icons/fi';
+import { FiClock, FiPower, FiUserPlus } from 'react-icons/fi';
+import { BsAlarm } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 import {
   Container,
@@ -17,6 +18,8 @@ import {
   NextAppointment,
   Section,
   Appointment,
+  ToCreateAppointment,
+  ToAddBarber,
 } from './styles';
 
 import logoImg from '../../assets/logo.svg';
@@ -159,6 +162,28 @@ const Dashboard: React.FC = () => {
               </Link>
             </div>
           </Profile>
+
+          <ToCreateAppointment>
+            <div>
+              <Link to="/CreatedAppointment">
+                <strong>
+                  <BsAlarm />
+                  Agendar um horário
+                </strong>
+              </Link>
+            </div>
+          </ToCreateAppointment>
+
+          <ToAddBarber>
+            <div>
+              <Link to="/ToAddBarber">
+                <strong>
+                  <FiUserPlus />
+                  Adicionar barbeiro
+                </strong>
+              </Link>
+            </div>
+          </ToAddBarber>
 
           <button type="button" onClick={signOut}>
             <FiPower />
